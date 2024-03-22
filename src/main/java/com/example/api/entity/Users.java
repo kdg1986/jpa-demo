@@ -1,14 +1,20 @@
 package com.example.api.entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 
 /**
  * https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
+ */
+/**
+ * https://www.datanucleus.org/products/accessplatform_6_0/jakarta/annotations.html
  */
 
 @Entity
@@ -27,5 +33,14 @@ public class Users {
     private String username; 
 
     private String email; 
-    private String registration_date; 
+    private String registration_date;
+
+    @OneToOne
+    @JoinTable(
+    name="OneToOne",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private UserDetail detail;
+    
 }

@@ -2,10 +2,13 @@ package com.example.api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.api.entity.UserDetail;
+import com.example.api.entity.UserJoin;
 import com.example.api.entity.Users;
 import com.example.api.service.ApiService;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +25,7 @@ public class ApiController {
         return apiService.getUserList();
     }
     @GetMapping("/api/user/{user_id}")
-    Users selectUserOne(@PathVariable("user_id") Integer user_id) {
+    Optional<Users> selectUserOne(@PathVariable("user_id") Integer user_id) {
         return apiService.getUser(user_id);
     }
     @GetMapping("/api/user/name/{userName}")
@@ -50,6 +53,16 @@ public class ApiController {
     List<Users> selectUserNameSort(@PathVariable("column") String column) {
         return apiService.getUsernameSort(column);
     }
+
+    @GetMapping("/api/user/count")
+    long selectCount() {
+        return apiService.getCount();
+    }
+
+    // @GetMapping("/api/userdetail")
+    // List<UserJoin> selectUserDetail() {
+    //     return apiService.getUserJoin();
+    // }
 
 
 

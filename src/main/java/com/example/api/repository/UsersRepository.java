@@ -1,9 +1,16 @@
-package com.example.api.entity;
+package com.example.api.repository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.jpa.repository.Meta;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.api.entity.Users;
+
+import jakarta.persistence.LockModeType;
 
 import java.util.List;
 
@@ -30,8 +37,8 @@ public interface UsersRepository  extends JpaRepository<Users, Integer>{
      * Like Expressions
      * https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html#jpa.query-methods.at-query.advanced-like
      */
-    @Query(value="select a from Users a where username like %:username%"
-    ,countQuery = "select count(a) from Users a where username like %:username%")
+    @Query(value="select a from Users a where username like %:username%")
+    // @Lock(LockModeType.NONE)
     List<Users> UsernameEndWith(@Param("username") String username);
 
     // @Query(value="select * from users a where username like %:username%"
