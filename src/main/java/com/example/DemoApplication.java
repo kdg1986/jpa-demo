@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 // import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import com.example.api.service.ApiService;
  * https://docs.spring.io/spring-boot/docs/3.3.0-SNAPSHOT/reference/htmlsingle/index.html#getting-started.first-application.code.spring-boot-application
  * 
  * */
+@EnableJpaAuditing
 @SpringBootApplication
 public class DemoApplication {
 
