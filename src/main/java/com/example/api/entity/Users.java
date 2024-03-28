@@ -72,12 +72,12 @@ public class Users {
     private String username; 
     private String email;
 
-    @OneToOne
-    @JoinTable(
-    name="OneToOne",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private UserDetail detail;
+    // @OneToOne
+    // @JoinTable(
+    // name="OneToOne",
+    //     joinColumns = @JoinColumn(name = "user_id"),
+    //     inverseJoinColumns = @JoinColumn(name = "user_id")
+    // )
+    // private UserDetail detail;
     
 }
